@@ -1,0 +1,28 @@
+#!/bin/sh
+
+while ! test -z "$1"; do
+ case "$1" in
+  "-o")
+    export LGTRACE_OUT="$2"
+    shift 2
+    ;;
+  "-l")
+    export LGTRACE_LIB="$2"
+    shift 2
+    ;;
+  *)
+    break
+    ;;
+ esac
+done
+
+if test -z "$1"; then
+  echo Usage: $0 [-o outfile] [-l library] command args...
+  exit 0
+fi
+
+if test -f ./libaudit.so; then
+  LD_AUDIT=./libaudit.so "$@"
+else
+  LD_AUDIT=/usr/lib/lgtrace/libaudit.so "$@"
+fi
