@@ -1,0 +1,5 @@
+- possibly merge with latrace
+- process dynamic symbols, search for their debug info instead of
+  the other way around
+- move debuginfo processing to a separate process
+- or rewrite from scratch ;)
