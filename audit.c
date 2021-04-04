@@ -76,7 +76,7 @@ la_objopen(struct link_map *map, Lmid_t lmid,
   return LA_FLG_BINDTO | (libstr ? 0 : LA_FLG_BINDFROM);
 }
 
-unsigned int
+int
 la_objclose(uintptr_t *cookie)
 {
   struct dsohandle *dso = (struct dsohandle *) *cookie;
